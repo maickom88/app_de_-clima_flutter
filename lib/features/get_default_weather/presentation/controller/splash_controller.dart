@@ -13,6 +13,11 @@ class SplashController extends GetxController {
   });
 
   @override
+  Future<void> onClose() {
+    return super.onClose();
+  }
+
+  @override
   void onInit() {
     Future.delayed(
       Duration(seconds: 3),
