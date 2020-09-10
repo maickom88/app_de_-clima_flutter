@@ -4,9 +4,12 @@ import 'package:google_fonts/google_fonts.dart';
 
 class SearchCityFormWidget extends StatelessWidget {
   final Function onPress;
-
-  const SearchCityFormWidget({Key key, @required this.onPress})
-      : super(key: key);
+  final TextEditingController textController;
+  const SearchCityFormWidget({
+    Key key,
+    @required this.onPress,
+    this.textController,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +30,7 @@ class SearchCityFormWidget extends StatelessWidget {
           children: [
             Expanded(
               child: TextFormField(
+                controller: textController,
                 decoration: InputDecoration(
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,

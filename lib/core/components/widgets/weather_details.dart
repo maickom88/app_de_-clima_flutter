@@ -17,12 +17,16 @@ class WeatherDetailsWidget extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SvgPicture.asset(SvgsConts.cloudy),
       );
-    if (DescriptionWeather.clearSky.contains(description))
+    if (DescriptionWeather.clearSky.check(
+      description.convertStringsInList(),
+    ))
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SvgPicture.asset(SvgsConts.clearSky),
       );
-    if (DescriptionWeather.raining.contains(description))
+    if (DescriptionWeather.raining.check(
+      description.convertStringsInList(),
+    ))
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SvgPicture.asset(SvgsConts.raining),

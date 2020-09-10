@@ -14,38 +14,52 @@ class HomePage extends GetView<HomeController> {
       backgroundColor: Theme.of(context).primaryColor,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 40),
-        child: Column(
-          children: [
-            TopLogoWidget(),
-            SizedBox(height: 20),
-            SearchCityFormWidget(
-              onPress: () {},
-            ),
-            SizedBox(height: 20),
-            GetBuilder<HomeController>(
-              builder: (_) {
-                if (!_.weather.isNull)
-                  return CardWeatherWidget(
-                    city: controller.weather.nameCity,
-                    description: controller.weather.description,
-                    temp: controller.weather.temp,
-                  );
-                if (_.failure is DataSourceError) return CardErrorComponent();
-                if (_.failure is AccessDenied)
-                  return CardErrorComponent(
-                    messege: "ACESSO NEGADO",
-                    description: "Você negou acesso a sua localiza",
-                  );
-                return Expanded(
-                  child: Center(
-                    child: CircularProgressIndicator(
-                      backgroundColor: Theme.of(context).secondaryHeaderColor,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TopLogoWidget(),
+              SizedBox(height: 20),
+              SearchCityFormWidget(
+                textController: controller.textController,
+                onPress: () =>
+                    controller.getWeather(controller.textController.text),
+              ),
+              SizedBox(height: 20),
+              GetBuilder<HomeController>(
+                dispose: (_) => controller.onClose(),
+                builder: (_) {
+                  if (_.isLoad)
+                    return Expanded(
+                      child: Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor:
+                              Theme.of(context).secondaryHeaderColor,
+                        ),
+                      ),
+                    );
+                  if (!_.weather.isNull)
+                    return CardWeatherWidget(
+                      city: controller.weather.nameCity,
+                      description: controller.weather.description,
+                      temp: controller.weather.temp,
+                    );
+                  if (_.failure is DataSourceError) return CardErrorComponent();
+                  if (_.failure is AccessDenied)
+                    return CardErrorComponent(
+                      messege: "ACESSO NEGADO",
+                      description: "Você negou acesso a sua localiza",
+                    );
+                  return Expanded(
+                    child: Center(
+                      child: CircularProgressIndicator(
+                        backgroundColor: Theme.of(context).secondaryHeaderColor,
+                      ),
                     ),
-                  ),
-                );
-              },
-            ),
-          ],
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
