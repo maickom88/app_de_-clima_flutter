@@ -1,6 +1,5 @@
 import 'package:app_de_clima/core/constants/routes_pages_nameds.dart';
 import 'package:app_de_clima/core/routes/routes_navigations.dart';
-import 'package:app_de_clima/features/get_weather/presentation/controller/home_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/get.dart';

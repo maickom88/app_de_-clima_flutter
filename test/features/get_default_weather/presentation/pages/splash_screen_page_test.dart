@@ -1,12 +1,10 @@
-import 'dart:async';
-
-import 'package:app_de_clima/core/constants/constants.dart';
-import 'package:app_de_clima/core/routes/routes_navigations.dart';
-import 'package:app_de_clima/features/get_default_weather/presentation/controller/splash_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:get/route_manager.dart';
 import 'package:mockito/mockito.dart';
+
+import 'package:app_de_clima/core/constants/constants.dart';
+import 'package:app_de_clima/core/routes/routes_navigations.dart';
 
 class MockNavigatorObserver extends Mock implements NavigatorObserver {}
 

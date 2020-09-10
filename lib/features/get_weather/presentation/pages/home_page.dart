@@ -5,7 +5,6 @@ import 'package:get/state_manager.dart';
 import '../../../../core/components/errors/card_error_component.dart';
 import '../../../../core/components/widgets/components.dart';
 import '../../../../core/errors/failures.dart';
-import '../../../get_default_weather/domain/entities/city.dart';
 import '../controller/home_controller.dart';
 import '../widgets/widgets.dart';
 
