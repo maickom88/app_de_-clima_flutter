@@ -46,10 +46,10 @@ class CardErrorComponent extends StatelessWidget {
             ),
           ),
           Visibility(
-            visible: messege != null || messege.isNotEmpty,
+            visible: messege != null,
             child: ButtonComponent(
               nameButton: 'Permitir acesso a localização',
-              onPress: onPress ?? null,
+              onPress: onPress ?? () {},
             ),
           )
         ],
