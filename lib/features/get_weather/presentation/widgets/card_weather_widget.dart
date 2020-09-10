@@ -78,7 +78,7 @@ class CardWeatherWidget extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              description.capitalize(description),
+              description.capitalize(description, firstOnly: true),
               style: GoogleFonts.openSans(
                 color: Colors.grey,
                 fontSize: 16,

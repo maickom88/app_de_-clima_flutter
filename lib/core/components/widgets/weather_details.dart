@@ -1,6 +1,8 @@
-import 'package:app_de_clima/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+import '../../constants/constants.dart';
+import '../../extensions/extensions.dart';
 
 class WeatherDetailsWidget extends StatelessWidget {
   final String description;
@@ -8,7 +10,9 @@ class WeatherDetailsWidget extends StatelessWidget {
   const WeatherDetailsWidget({Key key, this.description}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    if (DescriptionWeather.cloudy.contains(description))
+    if (DescriptionWeather.cloudy.check(
+      description.convertStringsInList(),
+    ))
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: SvgPicture.asset(SvgsConts.cloudy),
