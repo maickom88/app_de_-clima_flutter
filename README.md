@@ -1,16 +1,35 @@
-# app_de_clima
+Flutter App de Clima
+=======================
 
-A new Flutter project.
+![](https://github.com/maickom88/app_de_clima_flutter/blob/master/screenshots/spalsh_screen.png?raw=true)
+![](https://github.com/maickom88/app_de_clima_flutter/blob/master/screenshots/weather_screen.png?raw=true)
+![](https://github.com/maickom88/app_de_clima_flutter/blob/master/screenshots/acesso_negado_screen.png)
+![](https://github.com/maickom88/app_de_clima_flutter/blob/master/screenshots/error_screen.png?raw=true)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## ✔️ Instalação
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+#### ❗️ Attention ❗️
+Para o uso desse app é necessario clonar o repository do [App de Clima Web]() e seguir todas instruções. 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Clone esse repositorio, e use o comando abaixo!
+```dart
+ flutter pub get
+```
+...Agora é só iniciar o Debug
+
+
+#### ❗️ Attention ❗️
+Se você irá usar o proprio device para emular é necessario mudar a url base
+nos arquivos de constants no lib -> core -> constants-> [url_api.dart](https://github.com/maickom88/app_de_clima_flutter/blob/master/lib/core/constants/url_api.dart). 
+
+##### Exemplo
+```dart
+  static const urlBase = "http://SEU_IP_:8000/api";
+```
+
+E não esqueça de usar o comando na pasta raiz do projeto web 
+```php
+ php artisan serve --host 0.0.0.0
+```
