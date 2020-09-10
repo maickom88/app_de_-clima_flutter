@@ -20,6 +20,7 @@ class HomeController extends GetxController {
   City city;
   TextEditingController textController;
   bool isLoad = true;
+  RxBool showButton = false.obs;
 
   @override
   Future<void> onInit() async {
@@ -45,16 +46,16 @@ class HomeController extends GetxController {
     }
   }
 
-  void getWeather(String city) async {
-    isLoad = true;
-    update();
+  void getWeather(city) async {
     if (city.isEmpty)
       return Get.snackbar(
         'Error ao fazer busca',
         'Digite o nome da cidade',
         colorText: Colors.white,
       );
-    final result = await usecase(city);
+    isLoad = true;
+    update();
+    final result = await usecase(city.trim());
 
     result.fold(
       (l) {
@@ -67,8 +68,10 @@ class HomeController extends GetxController {
       (r) {
         weather = r;
         failure = null;
+        showButton.value = true;
         textController.clear();
         isLoad = false;
+
         update();
       },
     );

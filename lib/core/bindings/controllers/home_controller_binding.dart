@@ -9,8 +9,8 @@ import '../../../features/get_weather/presentation/controller/home_controller.da
 class HomeControllerBinding extends Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<HomeController>(
-      () => HomeController(
+    Get.put(
+      HomeController(
         screenArgs: Get.arguments,
         usecase: GetWeatherCity(
           repository: WeatherRepositoryImpl(

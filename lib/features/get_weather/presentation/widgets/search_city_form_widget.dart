@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+import '../../../../core/components/widgets/components.dart';
 
 class SearchCityFormWidget extends StatelessWidget {
   final Function onPress;
@@ -42,18 +43,10 @@ class SearchCityFormWidget extends StatelessWidget {
                 ),
               ),
             ),
-            RaisedButton(
-              onPressed: onPress,
-              color: Theme.of(context).secondaryHeaderColor,
-              child: Text(
-                'Procurar',
-                style: GoogleFonts.openSans(),
-              ),
-              padding: EdgeInsets.symmetric(vertical: 15, horizontal: 25),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(100),
-              ),
-            ),
+            ButtonComponent(
+              nameButton: 'Procurar',
+              onPress: onPress,
+            )
           ],
         ),
       ),

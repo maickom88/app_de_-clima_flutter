@@ -1,11 +1,8 @@
-import 'package:app_de_clima/core/components/widgets/weather_details.dart';
-import 'package:app_de_clima/core/constants/constants.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../core/constants/svgs_consts.dart';
+import '../../../../core/components/widgets/components.dart';
 
 class CardWeatherWidget extends StatelessWidget {
   final double temp;
