@@ -20,8 +20,8 @@ void main() {
   });
 
   test('Should return an instance of WeatherModel if it works', () async {
-    when(dio.get(any)).thenAnswer((_) async =>
-        Response(data: json.decode(fixtureString()), statusCode: 200));
+    when(dio.get(any)).thenAnswer(
+        (_) async => Response(data: fixtureString(), statusCode: 200));
     final result = await dataSourceIpml.getWeather('Salgueiro');
     expect(result, isA<WeatherModel>());
   });
