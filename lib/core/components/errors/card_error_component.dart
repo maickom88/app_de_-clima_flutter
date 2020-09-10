@@ -25,7 +25,7 @@ class CardErrorComponent extends StatelessWidget {
       child: Column(
         children: [
           Text(
-            '404',
+            messege ?? '404',
             style: GoogleFonts.openSans(
               color: Colors.grey,
               fontSize: 80,
@@ -33,7 +33,7 @@ class CardErrorComponent extends StatelessWidget {
             ),
           ),
           Text(
-            'Error ao buscar por essa cidade',
+            description ?? 'Error ao buscar por essa cidade',
             style: GoogleFonts.openSans(
               color: Colors.grey,
               fontSize: 16,

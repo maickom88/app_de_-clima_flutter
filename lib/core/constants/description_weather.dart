@@ -1,5 +1,25 @@
 class DescriptionWeather {
-  static const String clearSky = 'limpo';
-  static const String cloudy = 'nuvens, nuvem';
-  static const String raining = 'chuvas';
+  static const List clearSky = [
+    "limpo",
+    "sol",
+    "ensolarado",
+    "quente",
+    "calor"
+  ];
+  static const List cloudy = [
+    "nuvens",
+    "nuvem",
+    "nublado",
+    "neve",
+    "nevoeiro",
+  ];
+  static const List raining = [
+    "chuva",
+    "raios",
+    "raio",
+    "chuvendo",
+    "tempestade",
+    "trovão",
+    "trovões",
+  ];
 }

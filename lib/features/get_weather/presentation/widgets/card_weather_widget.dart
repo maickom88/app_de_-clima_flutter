@@ -1,3 +1,4 @@
+import 'package:app_de_clima/core/components/widgets/weather_details.dart';
 import 'package:app_de_clima/core/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -70,26 +71,14 @@ class CardWeatherWidget extends StatelessWidget {
               ),
             ),
           ),
-          if (description.contains(DescriptionWeather.cloudy))
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SvgPicture.asset(SvgsConts.cloudy),
-            ),
-          if (description.contains(DescriptionWeather.clearSky))
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SvgPicture.asset(SvgsConts.clearSky),
-            ),
-          if (description.contains(DescriptionWeather.raining))
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: SvgPicture.asset(SvgsConts.raining),
-            ),
+          WeatherDetailsWidget(
+            description: description,
+          ),
           SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Text(
-              description,
+              description.capitalize(description),
               style: GoogleFonts.openSans(
                 color: Colors.grey,
                 fontSize: 16,

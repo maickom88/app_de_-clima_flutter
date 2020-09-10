@@ -18,7 +18,7 @@ class HomeController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    final result = await usecase.call('Salgueiro');
+    final result = await usecase('Salgueiro');
     result.fold(
       (l) {
         failure = l;
@@ -31,7 +31,10 @@ class HomeController extends GetxController {
         update();
       },
     );
+  }
 
-    super.onInit();
+  @override
+  Future<void> onClose() {
+    return super.onClose();
   }
 }

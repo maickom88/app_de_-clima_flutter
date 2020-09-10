@@ -22,17 +22,29 @@ class HomePage extends GetView<HomeController> {
               onPress: () {},
             ),
             SizedBox(height: 20),
-            GetBuilder<HomeController>(builder: (_) {
-              return Visibility(
-                replacement: CardErrorComponent(),
-                visible: controller.weather != null,
-                child: CardWeatherWidget(
-                  city: controller.weather.nameCity,
-                  description: controller.weather.description,
-                  temp: controller.weather.temp,
-                ),
-              );
-            }),
+            GetBuilder<HomeController>(
+              builder: (_) {
+                if (!_.weather.isNull)
+                  return CardWeatherWidget(
+                    city: controller.weather.nameCity,
+                    description: controller.weather.description,
+                    temp: controller.weather.temp,
+                  );
+                if (_.failure is DataSourceError) return CardErrorComponent();
+                if (_.failure is AccessDenied)
+                  return CardErrorComponent(
+                    messege: "ACESSO NEGADO",
+                    description: "Você negou acesso a sua localiza",
+                  );
+                return Expanded(
+                  child: Center(
+                    child: CircularProgressIndicator(
+                      backgroundColor: Theme.of(context).secondaryHeaderColor,
+                    ),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
