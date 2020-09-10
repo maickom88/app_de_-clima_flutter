@@ -18,7 +18,8 @@ class WeatherDataSourceIpml implements WeatherDataSource {
 
   @override
   Future<WeatherModel> getWeather(String searchCity) async {
-    final response = await this.dio.get("${UrlApi.urlApi}/$searchCity");
+    final response =
+        await this.dio.get("${UrlApi.urlApi}/${searchCity.trim()}");
     if (response.statusCode == 200) {
       var data = json.decode(response.data);
       var weather = WeatherModel.fromMap(data);

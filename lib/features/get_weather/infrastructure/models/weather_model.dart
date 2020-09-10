@@ -20,7 +20,7 @@ class WeatherModel extends Weather {
 
     return WeatherModel(
       nameCity: map['name'],
-      temp: map['main']['temp'],
+      temp: (map['main']['temp'] as num).toDouble(),
       description: map['weather'][0]['description'],
     );
   }

@@ -75,8 +75,9 @@ class HomePage extends GetView<HomeController> {
                           nameButton: 'Voltar para sua cidade!',
                           onPress: () {
                             controller.getWeather(
-                                controller.city.subAdministrativeArea);
-                            controller.showButton.value = false;
+                              controller.city.subAdministrativeArea,
+                              isShowButton: false,
+                            );
                           },
                         ),
                       ),

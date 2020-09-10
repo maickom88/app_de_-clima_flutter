@@ -46,7 +46,7 @@ class HomeController extends GetxController {
     }
   }
 
-  void getWeather(city) async {
+  void getWeather(String city, {bool isShowButton = true}) async {
     if (city.isEmpty)
       return Get.snackbar(
         'Error ao fazer busca',
@@ -55,23 +55,23 @@ class HomeController extends GetxController {
       );
     isLoad = true;
     update();
-    final result = await usecase(city.trim());
+    final result = await usecase(city);
 
     result.fold(
       (l) {
         failure = l;
         weather = null;
         isLoad = false;
-
+        print(l);
         update();
       },
       (r) {
         weather = r;
         failure = null;
-        showButton.value = true;
+        showButton.value = isShowButton;
         textController.clear();
         isLoad = false;
-
+        print(r);
         update();
       },
     );
