@@ -1,3 +1,4 @@
+import 'package:app_de_clima/core/components/widgets/components.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -5,11 +6,13 @@ import 'package:google_fonts/google_fonts.dart';
 class CardErrorComponent extends StatelessWidget {
   final String messege;
   final String description;
+  final Function onPress;
 
   const CardErrorComponent({
     Key key,
     this.messege,
     this.description,
+    this.onPress,
   }) : super(key: key);
 
   @override
@@ -23,12 +26,15 @@ class CardErrorComponent extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
             messege ?? '404',
+            textAlign: TextAlign.center,
             style: GoogleFonts.openSans(
+              height: 0.9,
               color: Colors.grey,
-              fontSize: 80,
+              fontSize: messege == null || messege.isEmpty ? 80 : 40,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -39,6 +45,13 @@ class CardErrorComponent extends StatelessWidget {
               fontSize: 16,
             ),
           ),
+          Visibility(
+            visible: messege != null || messege.isNotEmpty,
+            child: ButtonComponent(
+              nameButton: 'Permitir acesso a localização',
+              onPress: onPress ?? null,
+            ),
+          )
         ],
       ),
     );

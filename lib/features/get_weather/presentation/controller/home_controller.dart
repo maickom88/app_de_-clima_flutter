@@ -3,14 +3,18 @@ import 'package:get/get.dart';
 import 'package:meta/meta.dart';
 
 import '../../../../core/components/validators/invalid_text.dart';
+import '../../../../core/decoratee/get_location_decoratee.dart';
 import '../../../../core/errors/failures.dart';
 import '../../../get_default_weather/domain/entities/city.dart';
+import '../../../get_default_weather/domain/usecases/get_deafult_weather.dart';
+import '../../../get_default_weather/external/datasources/city_datasource_impl.dart';
+import '../../../get_default_weather/infrastructure/reporitories/weather_default_repository_impl.dart';
 import '../../domain/entities/weather.dart';
 import '../../domain/usecases/get_weather_city.dart';
 
 class HomeController extends GetxController {
   final GetWeatherCity usecase;
-  final Object screenArgs;
+  Object screenArgs;
 
   HomeController({
     @required this.usecase,
@@ -26,9 +30,12 @@ class HomeController extends GetxController {
 
   @override
   Future<void> onInit() async {
+    isLoad = true;
+    update();
     textController = TextEditingController();
     if (screenArgs is Failure) {
       failure = screenArgs;
+      isLoad = false;
       update();
     } else {
       city = screenArgs;
@@ -69,5 +76,18 @@ class HomeController extends GetxController {
         update();
       },
     );
+  }
+
+  Future<void> getPermissionLocation() async {
+    final localtionGetLocationDecoratee = GetLocationDecoratee(
+      usecase: GetDefaultWeather(
+        repository: WeatherDefaultRepositoryImpl(
+          cityDataSource: CityDataSourceImpl(),
+        ),
+      ),
+    );
+    final result = await localtionGetLocationDecoratee.getLocation();
+    screenArgs = result;
+    onInit();
   }
 }

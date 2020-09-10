@@ -55,6 +55,9 @@ class HomePage extends GetView<HomeController> {
                         return CardErrorComponent(
                           messege: "ACESSO NEGADO",
                           description: "Você negou acesso a sua localiza",
+                          onPress: () {
+                            controller.getPermissionLocation();
+                          },
                         );
                       return Expanded(
                         child: Center(
